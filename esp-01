@@ -1,0 +1,50 @@
+#include <ESP8266WiFi.h>
+#include <WebSocketsServer.h>
+
+const char* ssid = "Smart Gloves";
+const char* password = "96700761";
+
+// Configurações de IP fixo
+IPAddress local_IP(192.168.0.200); // IP fixo do ESP-01
+IPAddress gateway(192.168.0.1);
+IPAddress subnet(255.255.255.0);
+
+WebSocketsServer webSocket = WebSocketsServer(81);
+String sensorData;
+
+void setup() {
+  Serial.begin(9600); // Comunicação serial com o Arduino
+
+  // Conectando ao Wi-Fi com IP fixo
+  if (!WiFi.config(local_IP, gateway, subnet)) {
+    Serial.println("Falha ao configurar IP fixo!");
+  }
+
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Conectando à rede Wi-Fi...");
+  }
+  Serial.println("Conectado à rede Wi-Fi!");
+  Serial.println(WiFi.localIP()); // Mostra o IP fixo no serial
+
+  webSocket.begin();
+  webSocket.onEvent(webSocketEvent);
+}
+
+void loop() {
+  webSocket.loop(); // Mantém o WebSocket ativo
+
+  // Verifica se há dados disponíveis vindos do Arduino
+  if (Serial.available() > 0) {
+    sensorData = Serial.readStringUntil('\n'); // Lê a linha de dados do Arduino
+    webSocket.broadcastTXT(sensorData); // Envia os dados para o browser via WebSocket
+  }
+  delay(100);
+}
+
+void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) {
+  if (type == WStype_TEXT) {
+    Serial.printf("Recebido do cliente [%u]: %s\n", num, payload);
+  }
+}

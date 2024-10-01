@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoramento em Tempo Real</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Dados dos Sensores de Flexão</h1>
+  
+  <div class="status">
+    Status: <span id="status" class="disconnected">Desconectado</span>
+  </div>
+
+  <!-- Seletor de Voz -->
+  <div class="voice-selector">
+    <label for="voice">Selecione a Voz:</label>
+    <select id="voice">
+      <option value="Masculino">Masculina</option>
+      <option value="Feminino">Feminina</option>
+    </select>
+  </div>
+
+  <!-- Botão para Ativar/Desativar Som -->
+  <button id="toggle-sound" class="toggle-sound">Ativar Som</button>
+
+  <!-- Área das mensagens -->
+  <div id="message" class="message"></div>
+
+  <!-- Área dos sensores -->
+  <div class="sensor-data">
+    <div class="sensor" id="sensor1">Sensor 1: --</div>
+    <div class="sensor" id="sensor2">Sensor 2: --</div>
+    <div class="sensor" id="sensor3">Sensor 3: --</div>
+    <div class="sensor" id="sensor4">Sensor 4: --</div>
+    <div class="sensor" id="sensor5">Sensor 5: --</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
