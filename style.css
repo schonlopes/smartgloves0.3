@@ -1,82 +1,91 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .status {
-    margin: 10px 0;
-    font-size: 18px;
-  }
-  
-  .connected {
-    color: green;
-  }
-  
-  .disconnected {
-    color: red;
-  }
-  
-  .voice-selector {
-    margin-bottom: 20px;
-  }
-  
-  .message {
-    font-size: 4vw;
-    color: #ff6347;
-    font-weight: bold;
-    margin: 20px;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.status {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.connected {
+  color: green;
+}
+
+.disconnected {
+  color: red;
+}
+
+.voice-selector {
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 4vw;
+  color: #ff6347;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.sensor-data {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sensor {
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-sound {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-sound:hover {
+  background-color: #0056b3;
+}
+
+/* Efeito visual para mensagens importantes */
+.message.alert {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { background-color: transparent; }
+  50% { background-color: yellow; }
+  100% { background-color: transparent; }
+}
+
+@media (max-width: 768px) {
   .sensor-data {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
   }
-  
-  .sensor {
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .message {
+    font-size: 6vw;
   }
-  
-  /* Botão de Ativar/Desativar Som */
-  .toggle-sound {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .toggle-sound:hover {
-    background-color: #0056b3;
-  }
-  
-  @media (max-width: 768px) {
-    .sensor-data {
-      flex-direction: column;
-    }
-  
-    .message {
-      font-size: 6vw;
-    }
-  }
-  
+}
