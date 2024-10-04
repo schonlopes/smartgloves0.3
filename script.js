@@ -106,7 +106,7 @@ function showMessage(sensor, text) {
 }
 
 // Lógica do botão para ativar/desativar som
-toggleSoundButton.addEventListeneraa("click", function() {
+toggleSoundButton.addEventListener("click", function() {
   soundEnabled = !soundEnabled;
   toggleSoundButton.innerText = soundEnabled ? "Desativar Som" : "Ativar Som";
 });
